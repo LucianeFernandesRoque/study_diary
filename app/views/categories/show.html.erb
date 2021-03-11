@@ -1,0 +1,4 @@
+
+  <td><%= @category.title %></td>
+  <%= link_to 'Editar categoria', edit_category_path(@category) %> 
+  <%= link_to 'Deletar', category_path(@category), method: :delete, data:{confirm: "Tem certeza que quer apagar esta tarefa #{@category.title}?"} %>  

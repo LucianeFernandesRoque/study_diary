@@ -1,0 +1,14 @@
+  <table>
+  <%= link_to 'Cadastrar nova categoria', new_category_path %>
+  <br>
+  <%= link_to 'Voltar', new_study_item_path %>
+  <h2> Categorias de itens de estudo</h2>
+  <h4>Categorias cadastradas</h4>
+  <tr>
+  <th><% @categories.each do |category| %></th>
+  </tr>
+  </table>
+
+  <h3><%= link_to category.title, category %></h3>
+
+<% end %>

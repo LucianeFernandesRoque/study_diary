@@ -1,0 +1,48 @@
+<html>
+ <body>  
+  <% study_item.errors.full_messages. each do |message|  %>
+    <p style="color:red;"><%= message %></p>
+  <% end %>
+
+  <%= form_with model: study_item, local: true do |f| %>
+    <div class="row">
+      <div class="col-sm-5">
+        <div class="form-group">
+          <%= f.label :title, 'Título'  %>
+          <%= f.text_field :title, class:"form-control" %>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-5">
+        <div class="form-group">
+          <%= f.label :category_id, 'Categoria'  %>
+          <%= f.collection_select :category_id, categories, :id, :title, class:"form-control", rows:3 %>
+        </div>
+      </div>
+    </div>
+  
+  <div class="row">
+      <div class="col-sm-5">
+        <div class="form-group">
+          <%= f.label :description, 'Descrição'  %>
+          <%= f.text_area :description, class:"form-control", rows:4 %>
+        </div>
+      </div>
+    </div>
+
+  <div class="row">
+      <div class="col-sm-3">
+        <div class="form-group">
+          <%= f.label :deadline, 'Prazo'  %>
+          <%= f.date_field :deadline, class:"form-control" %>
+        </div>
+      </div>
+  </div>
+
+  <%= f.submit 'Enviar', class:"btn btn-dark" %> 
+  <% end %>
+<%= link_to 'Criar uma nova Categoria', categories_path %>
+  </body>
+</html>

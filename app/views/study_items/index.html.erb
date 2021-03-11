@@ -1,0 +1,25 @@
+    <title>Diário de estudos</title>
+    <div class="container">
+    <div class="alert alert-success" role="alert">
+    <h4 class="alert-heading">Bem vindo ao diário de estudos  <i>< QUERO SER DEV GIRLS /></i></h4>
+    </div>
+    <%= link_to 'Novo ítem de estudo', new_study_item_path %>
+    <br>
+      <div>
+    <%= form_tag study_items_search_path, method: :get %>
+     </div>
+
+     <div>
+       <%= text_field_tag :title, @title %>
+       <%= button_to  "Buscar", nil %>
+     </div>
+
+  <% @study_items.each do |study_item| %>
+  <%= render study_item %>
+   <div>
+    <%= link_to 'Ver detalhes', study_item %>
+  </div>
+  </table>
+  
+
+<% end %>

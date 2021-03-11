@@ -1,0 +1,17 @@
+ <tbody>
+  <% @study_items.each do |study_item| %>
+  <h3><%= link_to study_item.title, study_item %></h3>
+
+  <tr>
+    <td>Título: <%= study_item.title %></td>
+    <td>Categoria:  <%= study_item.category.title %></td>
+    <td>Descrição: <%= study_item.description %> </td>
+    <td> <%= "Prazo: #{study_item.deadline.strftime('%d/%m/%y')}" %> </td>
+    <td> Status: <%= study_item.status %></td>
+    <td><%= link_to 'Editar', edit_study_item_path(study_item) %></td>
+    <td><%= link_to "Apagar tarefa", study_item_path(study_item), method: :delete, data: {confirm: "Tem certeza que quer apagar esta tarefa?  #{study_item.title}"} %> </td>
+    <%= link_to 'Voltar', root_path %>
+
+  </tr>
+</tbody>
+<% end %>

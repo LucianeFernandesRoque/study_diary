@@ -1,0 +1,14 @@
+ <p>
+    Usuário:
+    <%= comment.commenter %>
+  </p>
+
+  <p>Comentário:
+    <%= comment.body %>
+  </p>
+
+  <p>
+    <%= link_to 'Apagar comentário', [comment.study_item, comment],
+    method: :delete,
+    data: { confirm: 'Tem certeza que deseja apagar o comentário? '} %>
+  </p>

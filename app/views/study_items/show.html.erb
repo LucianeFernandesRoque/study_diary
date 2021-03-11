@@ -1,0 +1,19 @@
+  
+  <%= link_to 'Editar ítem de estudo', edit_study_item_path(@study_item) %> 
+  <%= link_to "Apagar tarefa", study_item_path(@study_item), method: :delete, data: {confirm: "Tem certeza que quer apagar esta tarefa #{@study_item.title}?"} %> 
+    <br>
+    <br>
+  <% if @study_item.late? %>
+  <% @study_item.status = 'Atrasado' %>
+    <% elsif @study_item.deadline > Date.current %>
+  <% @study_item.status = 'Pendente' %>
+    <% elsif @study_item.deadline == Date.current %>
+  <% @study_item.status = 'estudar hoje' %>
+    <% end %>
+   <% if @study_item.checked? %>
+  <p>Finalizada em: <%= @study_item.check_date.strftime('%d/%m/%y %H:%M') %></p>
+    <% else %>
+  <%= link_to '✓ Concluído',  check_study_item_path(@study_item), method: :post %>
+    <% end %>
+    <%= render @study_item %>
+    <%= link_to 'Voltar', study_items_path %>

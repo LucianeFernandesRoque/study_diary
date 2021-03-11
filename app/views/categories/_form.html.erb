@@ -1,0 +1,6 @@
+<%= form_with model: category, local: true do |category| %>
+  <%= category.label :title, 'categoria' %>
+  <%= category.text_field :title %>
+  <%= category.submit 'Enviar' %> 
+
+  <% end %>
